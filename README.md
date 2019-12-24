@@ -3,6 +3,8 @@ ESP8266 code for singe or quad wifi driven relays for sprinkler systems.
 
 I am using node-red and emqx to control the gadets.
 
+The aim is to let the main host do all the scheduling and leave the sprinkler on/off to a sub AUS$50 sprinkler-server.
+
 ## Board types (before you need hack the code):  
 ```
   - Wemos D1 R2 "UNO" with DIYMORE quad relay shield (needs addition of pullup resistors)
