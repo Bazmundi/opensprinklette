@@ -54,6 +54,8 @@ For quad gadgets set defines thus:
 ```
 
 # PROTOYPING base boards!
-I am prototyping a base boards for the Wemos D1 R2 "UNO" and Wemos D1 MINI.  Why?  Well you will need convert the 24VAC to 3.3VDC, 5VDC or 9VDC.
+I am prototyping base boards for the Wemos D1 R2 "UNO" and Wemos D1 MINI.  Why?  Well you will need convert the 24VAC to 3.3VDC, 5VDC or 9VDC.  
+
+There will also be a vanilla 24VAC to 3.3/5/9VDC board without headers for Wemos boards.
 
 Not to mention you need handle the spikes on the 24VAC when the sprinkler solenoids close/open.  Still some debugging of the hardware ongoing.  Boards will come out on OSH Park once problems resolved.
