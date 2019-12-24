@@ -39,9 +39,21 @@ For quad gadgets set defines thus:
 ```
 /os/soundOff                  ; All gadgets that are online send their meta-data record.
 /os/allStop                   ; All sprinkler relays on all gadgets (single or quad) turned off to stop the water.
-/os/gadgetID()/relayID()/0|1  ; The gadgetID() returns the ESP8266 unique ChipID.
+
+/os/gadgetID()/relayID()/0|1/milliseconds  
+
+                              ; The gadgetID() returns the ESP8266 unique ChipID.
                               ; The relayID() returns 1..4 for quad, 1 for single gadget.
                               ; 0="OFF: and 1="ON".  So either turn the associated sprinkler relayID() on or off.
+                              ;
+                              ; The time is how long the relay will be set for in milliseconds.
+                              ; A time less than 5 minutes (in milliseconds) is ignored.
+                              ;
+                              ; A time longer than 1 hour is ignored.  If you want sprinklers on for more than 1hr then send
+                              ; second on command after the first expires.  This is a safety feature so that if anything goes 
+                              ; wrong, the sprinkler-server will finish the watering but will not empty the dam.
+                              ;
+                              ; Any time at end of "OFF" command is not used currently.
 ```
 
 
