@@ -49,6 +49,8 @@ For quad gadgets set defines thus:
 /os/lwt      ; Sends a gadget meta-data record with gadget reported offline (online flag set to 0="OFF").
 /os/herald   ; A herald is sent on powerup, to provide the chipID and gadget type (1=Single, 2=Quad).
              ; The meta-data record is used with online flag set to 1="ON".
+             
+/os/gadgetID()/opto/0|1  ; Publish debounced opto input (YUSHAN single gadget)
 ```
 
 # PROTOYPING base boards!
