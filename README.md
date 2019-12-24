@@ -37,10 +37,10 @@ For quad gadgets set defines thus:
 
 ## MQTT topics that gadgets subscribe to:
 ```
-/os/soundOff                  ; All nodes that are online send their meta-data record.
-/os/allStop                   ; All sprinkler relays on all nodes (single or quad) turned off to stop the water.
+/os/soundOff                  ; All gadgets that are online send their meta-data record.
+/os/allStop                   ; All sprinkler relays on all gadgets (single or quad) turned off to stop the water.
 /os/gadgetID()/relayID()/0|1  ; The gadgetID() returns the ESP8266 unique ChipID.
-                              ; The relayID() returns 1..4 for quad, 1 for single node.
+                              ; The relayID() returns 1..4 for quad, 1 for single gadget.
                               ; 0="OFF: and 1="ON".  So either turn the associated sprinkler relayID() on or off.
 ```
 
