@@ -43,7 +43,7 @@ For quad gadgets set defines thus:
 ```
 
 
-## MQTT topics that gaggets publish to:
+## MQTT topics that gadgets publish to:
 ```
 /os/debug    ; Only used during development.
 /os/lwt      ; Sends a gadget meta-data record with gadget reported offline (online flag set to 0="OFF").
