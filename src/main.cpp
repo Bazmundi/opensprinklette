@@ -142,14 +142,14 @@ String gadgetID (void) {
 
 String gadget ( void ) {
   
-  return OpenSprinklette + "/" + gadgetID();
+  return OpenSprinklette + "/gadget/" + gadgetID();
 }
 
 #ifdef YUSHAN
 
 String optoTopic ( void ) {
   
-  return gadget() + "/" + "opto";
+  return gadget() + "/opto";
 }
 
 int debounceOpto (void) {
