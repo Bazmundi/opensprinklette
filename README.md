@@ -40,7 +40,7 @@ For quad gadgets set defines thus:
 /os/soundOff                  ; All gadgets that are online send their meta-data record.
 /os/allStop                   ; All sprinkler relays on all gadgets (single or quad) turned off to stop the water.
 
-/os/gadgetID()/relayID()/0|1/time=milliseconds  
+/os/gadget/gadgetID()/relayID()/0|1/time=milliseconds  
 
                               ; The gadgetID() returns the ESP8266 unique ChipID.
                               ; The relayID() returns 1..4 for quad, 1 for single gadget.
@@ -64,7 +64,7 @@ For quad gadgets set defines thus:
 /os/herald   ; A herald is sent on powerup, to provide the chipID and gadget type (1=Single, 2=Quad).
              ; The meta-data record is used with online flag set to 1="ON".
              
-/os/gadgetID()/opto/0|1  ; Publish debounced opto input (YUSHAN single gadget)
+/os/gadget/gadgetID()/opto/0|1  ; Publish debounced opto input (YUSHAN single gadget)
 ```
 
 # PROTOYPING base boards!
