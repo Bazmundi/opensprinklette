@@ -7,7 +7,7 @@ The aim is to let the main host do all the scheduling and leave the sprinkler on
 
 The current boards look like this: https://organicmonkeymotion.wordpress.com/2020/01/03/final-opensprinklette-designs-for-now/
 
-Other drivel at: https://organicmonkeymotion.wordpress.com/category/opensprinklette/
+Other drivel at: https://organicmonkeymotion.wordpress.com/2020/01/04/hint/
 
 ## Board types (before you need hack the code):  
 ```
