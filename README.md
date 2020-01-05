@@ -18,7 +18,7 @@ Other drivel at: https://organicmonkeymotion.wordpress.com/2020/01/04/hint/
 
 See example of the third gadget option at: https://organicmonkeymotion.wordpress.com/2018/10/15/opensprinklette-single/
 
-For single D1 MINI gadgets set defines thus:
+For single D1 MINI gadgets (using my board design) set defines thus:
 ```
 #define SINGLE_UNIT
 //#define QUAD_UNIT
