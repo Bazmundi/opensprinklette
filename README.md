@@ -39,6 +39,8 @@ For quad gadgets set defines thus:
 // #define YUSHAN
 ```
 
+NOTE:  The latest versions of the Opensprinklette boards have either prototyping area (quad) or bring additional pins out to 2.54mm spacing SIL connectors.  So, either of two options are, branch this code and add additional functionality to support your hardware hacking OR opt for the ESPHome option.   
+
 ## MQTT topics that gadgets subscribe to:
 ```
 /os/soundOff                  ; All gadgets that are online send their meta-data record.
