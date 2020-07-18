@@ -49,12 +49,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <string.h>
 
 // Use one define or the other.  Not both.
-#define SINGLE_UNIT
-//#define QUAD_UNIT
+//#define SINGLE_UNIT
+#define QUAD_UNIT
 
 // Update these with values suitable for your network.
-const char* ssid        = "xxxxxxxxxx";  // Put your wifi router ssid here.
-const char* password    = "xxxxxxxxxx";   // Put your wifi router password here.
+const char* ssid        = "xxx";  // Put your wifi router ssid here.
+const char* password    = "yyy";   // Put your wifi router password here.
 
 // MQTT centric variables
 IPAddress MQTTserver(192,168,0,100);  // Put your mqtt server IP address here.
@@ -70,7 +70,9 @@ unsigned long lastOnMsg[] = {0,0,0,0}; // Time in milliseconds from milli(). Fou
 
 // relay management constants
 const unsigned long onehr           = 3600000;  // In milliseconds.  Fail safe since water is expensive.
-const unsigned long fivemin         = 300000;
+const unsigned long five = onehr / 12;
+const unsigned long fifteenmin      = onehr / 4;
+const unsigned long onemin          = onehr / 60;
 const unsigned long watchdog        = onehr + fivemin;  // not currently used
 
 #ifdef SINGLE_UNIT
@@ -332,15 +334,52 @@ long payloadToTime(byte* payload, unsigned int length) {
 }
 
 void setSprinklerStateOn (int relayID, long time, long minimumTime) { 
-  // @assert(relayID as checked by caller)
-  // 0 for units, between 0 and 3 inclusive for quad boards
-  // @assert(time as checked by caller)
-  // Capped at 1hr.
+  // @assert(relayID in [0] or [0,1,2,3] as checked by caller)
+  //     0 for units, between 0 and 3 inclusive for quad boards
+  //     indexed arrays set to 1 or 4 cells at compile time using switches
+  // @assert(time > minimum and < value set by caller then keep)
+  //     Capped by caller currently at 1hr (in milliseconds)
+  // @assert(time < minimum & element in [1,2,3,4] then keep) 
+  // @assert(time < minimum & element in [15,30,45,60] then keep) 
 
-  if (time>=minimumTime) {
+  int valid = 1; // either time > minimum or one of [1,2,3,4] or [15,30,45,60]
 
-    digitalWrite(relays[relayID],RELAY_ON);
+  if (time>=minimumTime) { // set time in milliseconds > minimum
     sprinklerOnTime[relayID] = time;
+
+  } else { // less than minimumTime in milliseconds
+
+    // allow either 1..4*15 or literally 15 minute increments
+    
+    switch (time) { // set on time in equivalent milliseconds
+      case 1 : 
+      case 15: 
+        sprinklerOnTime[relayID] = fifteenmin;
+        break;
+
+      case 2 :
+      case 30:
+        sprinklerOnTime[relayID] = fifteenmin * 2;
+        break;
+
+      case 3 :
+      case 45:
+        sprinklerOnTime[relayID] = fifteenmin * 3;
+        break;
+
+      case 4 :
+      case 60:
+        sprinklerOnTime[relayID] = onehr;
+        break;
+
+      default: 
+        valid = 0;
+        break;
+    }
+  }
+
+  if (valid) {
+    digitalWrite(relays[relayID],RELAY_ON);
     lastOnMsg[relayID] = millis();
   }
 }
