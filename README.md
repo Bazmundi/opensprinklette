@@ -49,11 +49,19 @@ NOTE:  The latest versions of the Opensprinklette boards have either prototyping
 /os/gadget/gadgetID()/relayID()/0|1/time=milliseconds  
 
                               ; The gadgetID() returns the ESP8266 unique ChipID.
+                              ;
                               ; The relayID() returns 1..4 for quad, 1 for single gadget.
+                              ;
                               ; 0="OFF: and 1="ON".  So either turn the associated sprinkler relayID() on or off.
                               ;
                               ; The time is how long the relay will be set for in milliseconds.
-                              ; A time less than 5 minutes (in milliseconds) is ignored.
+                              ;
+                              ; A time less than 5 minutes (300000 in milliseconds) is ignored if it is not in the range 1..4 or in set [15,30,45,60]:
+                              ;   If 1..4 the timeers are set to 15, 30, 45 or 60 minutes in milliseconds.
+                              ;   If [15,30,45,60] the timeers are set to 15, 30, 45 or 60 minutes in milliseconds.
+                              ;
+                              ; So you can have a variable time between 5 and 60 minutes using values over 300000 in milliseconds, or 
+                              ;    use one of four multiples of 15 minutes.   
                               ;
                               ; A time longer than 1 hour is ignored.  If you want sprinklers on for more than 1hr then send
                               ; second on command after the first expires.  This is a safety feature so that if anything goes 
