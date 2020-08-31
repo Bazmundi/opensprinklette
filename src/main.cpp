@@ -19,10 +19,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 // ------------------------------------------------------------------------------------------ //
 //                                                                                            //
-// Board types (before you need hack the code):                                               //                    //
+// Board types (before you need hack the code):                                               //
 //  - Wemos D1 R2 "UNO" with DIYMORE quad relay shield (needs addition of pullup resistors)   //
 //  - Wemos D1 MINI using Wemos D1 MINI relay shield                                          //
-//  - ESP8266 220V 10A DC 7-30V Network Relay WIFI Module with opto coupler (various sources) //                //
+//  - ESP8266 220V 10A DC 7-30V Network Relay WIFI Module with opto coupler (various sources) //
 //                                                                                            //
 // Open Source libraries used (other than frameworks provided by PlatformIO):                 //
 //  - https://github.com/Imroy/pubsubclient                                                   //
@@ -70,7 +70,7 @@ unsigned long lastOnMsg[] = {0,0,0,0}; // Time in milliseconds from milli(). Fou
 
 // relay management constants
 const unsigned long onehr           = 3600000;  // In milliseconds.  Fail safe since water is expensive.
-const unsigned long five = onehr / 12;
+const unsigned long five            = onehr / 12;
 const unsigned long fifteenmin      = onehr / 4;
 const unsigned long onemin          = onehr / 60;
 const unsigned long watchdog        = onehr + fivemin;  // not currently used
