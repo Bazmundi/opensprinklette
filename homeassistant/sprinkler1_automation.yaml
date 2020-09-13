@@ -1,0 +1,18 @@
+# snippet to use an input and data templates to turn a sprinkler on for integer minutes as milliseconds
+
+- id: '1594729904476'
+  alias: Sprinkler 1 on sun up
+  description: ''
+  trigger:
+  - event: sunrise
+    offset: 00:00:00
+    platform: sun
+  condition: []
+  action:
+  - data_template:
+      payload: '{{ states(''input_number.sprinkler1_suntime'') | int * 60000 }}'
+      topic: /os/gadget/12678832/1/1
+    service: mqtt.publish
+  mode: single
+  
+  
