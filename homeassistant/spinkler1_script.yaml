@@ -1,0 +1,10 @@
+# code snippet to show how the scrips can be used to call a mqtt topic with integer minutes
+# converted to milliseconds
+
+sprinkler1_script:
+  alias: sprinkler1_script
+  sequence:
+  - data_template:
+      payload: '{{ states(''input_number.sprinkler1_time'') | int * 60000 }}'
+      topic: /os/gadget/12678832/1/1
+    service: mqtt.publish
