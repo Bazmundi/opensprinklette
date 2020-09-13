@@ -1,5 +1,9 @@
 # snippet to use an input and data templates to turn a sprinkler on for integer minutes as milliseconds
 
+# topic:/os/gadget/<ESP8266 chip id>/<relay index on gadget:1..4>/<ON=1, OFF=0>; payload=[1..4]|[15,30,45,60]| 5mins>milliseconds<1hr
+# gadget converts 1..4 to 15,30,45 and 60 mins, or use 15,30,45 and 60 mins, or set milliseconds directly >5min worth and <1hr worth
+# payload ignored when OFF topic is recieved
+
 - id: '1594729904476'
   alias: Sprinkler 1 on sun up
   description: ''
