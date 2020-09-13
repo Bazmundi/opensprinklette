@@ -1,5 +1,8 @@
 # hmi snippet that sends the allStop topic to have all subscribing gagets stop their activities (think emergency stop and hence the skull)
 
+# note, it might make sense to make the allStop a hold_action and not a tap_action, as this would add a layer of 2bsure-2bsure.  
+# Just swap hold_action: with tap_action: 
+
 entity: input_boolean.sprinkler_all_stop
 hold_action:
   action: none
