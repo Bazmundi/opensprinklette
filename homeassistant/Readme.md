@@ -1,6 +1,6 @@
 # Home Assistant Snippets
 
-So, these files are just a collection of code snippets from my HA work to provide some control over the opensprinklette gadgets.
+So, these files are just a collection of code snippets from my HA work to provide some control over the opensprinklette gadgets.  Those opensprinklette gadgets being over 
 
 HA is running as a docker image on top of Hypriot.  I did play with HASSIO for a little while but too many problems, I found at least, with how "invisible"
 this configurtion approach is, the HA is bad enough to debug.
