@@ -1,0 +1,63 @@
+################################################################################
+# HOME STACK
+################################################################################
+# docker run -d -p 18083:18083 -p 1883:1883 --name mybroker emqx/emqx:v3.2.7
+# docker run -d -p 1880:1880 -v /home/pirate/.node-red/data:/data --name mynodered --link mybroker:broker nodered/node-red:latest
+# docker run --init -d --name="home-assistant" -e "TZ=Australia/Adelaide" -v /home/pirate/.homeassistant:/config --net=host homeassistant/raspberrypi3-homeassistant:stable
+# docker run -d --name=deconz --net=host --restart=always -e TZ=Australia/Adelaide -v /user/pirate/.deCONZ:/root/.local/share/dresden-elektronik/deCONZ     --device=/dev/ttyACM0     marthoc/deconz:latest
+#
+# docker-compose up
+################################################################################
+version: "3.7"
+
+services:
+  mynodered:
+    container_name: mynodered
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Australia/Adelaide
+    ports:
+      - "1880:1880"
+    links:  
+      - mybroker
+      - deconz
+      - home-assistant
+    volumes:
+       - ~/homeserver/.node-red/data:/data
+    restart: always
+
+  mybroker:
+    container_name: mybroker
+    image: emqx/emqx:v3.2.7
+    ports: 
+      - "18083:18083"
+      - "1883:1883"
+    restart: always
+
+  home-assistant:
+    container_name: home-assistant    
+    image: homeassistant/raspberrypi3-homeassistant:stable
+    environment:
+      - TZ=Australia/Adelaide
+    ports: 
+      - "8123:8123"
+    links: 
+      - mybroker
+      - deconz
+    volumes:
+      - ~/homeserver/.homeassistant:/config
+    restart: always
+
+  deconz:
+    container_name: deconz
+    image: marthoc/deconz:latest
+    environment: 
+      - TZ=Australia/Adelaide
+      - DECONZ_DEVICE=/dev/ttyACM0
+
+    volumes: 
+      -  ~/homeserver/.deCONZ:/root/.local/share/dresden-elektronik/deCONZ
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
