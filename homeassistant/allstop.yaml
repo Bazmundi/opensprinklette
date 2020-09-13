@@ -1,0 +1,16 @@
+# hmi snippet that sends the allStop topic to have all subscribing gagets stop their activities (think emergency stop and hence the skull)
+
+entity: input_boolean.sprinkler_all_stop
+hold_action:
+  action: none
+icon: 'mdi:skull'
+icon_height: 24px
+name: Sprinkler ALL STOP!
+show_icon: true
+show_name: true
+tap_action:
+  action: call-service
+  service: mqtt.publish
+  service_data:
+    topic: /os/allStop
+type: entity-button
