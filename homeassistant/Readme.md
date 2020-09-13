@@ -16,4 +16,8 @@ I am currently only running a quad board but that will change over time.
 
 # Images
 allStop.png: shows how the links in docker-compose file allow connecting between tools over docker container names.
+timer_hmi.png: shows what the sprinkler HMI looks like.  
+  Entitis Card is used for sun tools.  
+  A Vertical Stack frames the Entites Cards for each of the four instant on/timed off functions.
+  A button card for the allStop.
 
