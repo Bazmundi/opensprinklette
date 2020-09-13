@@ -1,0 +1,110 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+mqtt:
+  broker: mybroker
+
+android_ip_webcam:
+  - host: 192.168.0.32
+    port: 8000
+    name: "Camera 1"
+    switches:
+      - torch
+      - ffc
+
+input_boolean:
+  sprinkler_1:
+  sprinkler_2:
+  sprinkler_3:
+  sprinkler_4: 
+  sprinkler_all_stop:
+  sprinkler_sound_off:
+
+camera:
+  - platform: bom
+    location: Adelaide
+
+sensor:
+  - platform: bom
+    station: IDS60801.94675
+    monitored_conditions:
+      - apparent_t
+      - air_temp
+      - dewpt
+      - press
+      - rain_trace
+      - rel_hum
+      - wind_dir
+      - wind_spd_kmh
+
+input_number:
+  sprinkler1_time:
+    name: "Sprinkler 1 time"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
+  sprinkler2_time:
+    name: "Sprinkler 2 time"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
+  sprinkler3_time:
+    name: "Sprinkler 3 time"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
+  sprinkler4_time:
+    name: "Sprinkler 4 time"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
+  sprinkler1_suntime:
+    name: "Sprinkler 1 suntime"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
+  sprinkler2_suntime:
+    name: "Sprinkler 2 suntime"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
+  sprinkler3_suntime:
+    name: "Sprinkler 3 suntime"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
+  sprinkler4_suntime:
+    name: "Sprinkler 4 suntime"
+    icon: mdi:clock-start
+    initial: 5
+    min: 5
+    max: 15
+    step: 1
