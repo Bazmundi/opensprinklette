@@ -1,6 +1,8 @@
 # this snippet is just creating the HMI for setting the timers for the sun up/sun down triggered
 # sprinkler events
 
+# See "Sun Timers" HMI in attached png.
+
 entities:
   - entity: input_number.sprinkler1_suntime
     name: Sprinkler 1
