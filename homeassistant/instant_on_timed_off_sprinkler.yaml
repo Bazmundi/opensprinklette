@@ -1,0 +1,24 @@
+# this hmi snippet turns off sprinkler with hold_action
+# and turns on sprinkler, via script, for integer minutes converted to milliseconds in scripts
+
+entities:
+  - entity: input_number.sprinkler1_time
+    name: Timer 1
+  - entity: input_boolean.sprinkler_1
+    hold_action:
+      action: call-service
+      service: mqtt.publish
+      service_data:
+        payload: 1
+        topic: /os/gadget/12678832/1/0
+    icon: 'mdi:sprinkler'
+    icon_height: 24px
+    name: Sprinkler 1
+    show_icon: true
+    show_name: true
+    tap_action:
+      action: call-service
+      service: script.1595036008915
+    type: entity-button
+show_header_toggle: false
+type: entities
