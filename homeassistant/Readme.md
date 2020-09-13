@@ -13,3 +13,7 @@ My docker-compose.yml is included.
 Any sprinklerX is repeated sprinkler1..4.   
 
 I am currently only running a quad board but that will change over time.
+
+# Images
+allStop.png: shows how the links in docker-compose file allow connecting between tools over docker container names.
+
