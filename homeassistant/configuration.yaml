@@ -1,31 +1,15 @@
+# relevant snippets for setting up HA running under docker along with at least an MQTT broker in
+# another docker container
 
-# Configure a default setup of Home Assistant (frontend, api, etc)
-default_config:
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
-
-# Text to speech
-tts:
-  - platform: google_translate
-
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+# this actaully sets up to point to the docker container name of my xmqtt setup
+# in fact I have used links to ensure that any host comms can be via docker container
+# names where possible.  This would circumvent the need for static IP for host except for
+# external items that rely upon fixed host IP. 
 
 mqtt:
   broker: mybroker
 
-android_ip_webcam:
-  - host: 192.168.0.32
-    port: 8000
-    name: "Camera 1"
-    switches:
-      - torch
-      - ffc
-
+# booleans for button actions
 input_boolean:
   sprinkler_1:
   sprinkler_2:
@@ -34,24 +18,11 @@ input_boolean:
   sprinkler_all_stop:
   sprinkler_sound_off:
 
-camera:
-  - platform: bom
-    location: Adelaide
-
-sensor:
-  - platform: bom
-    station: IDS60801.94675
-    monitored_conditions:
-      - apparent_t
-      - air_temp
-      - dewpt
-      - press
-      - rain_trace
-      - rel_hum
-      - wind_dir
-      - wind_spd_kmh
 
 input_number:
+
+  # this is for the integer times for sprinklers for instant on/timed off
+  # ranges 5..15 minutes in 1 minute increments
   sprinkler1_time:
     name: "Sprinkler 1 time"
     icon: mdi:clock-start
@@ -59,27 +30,9 @@ input_number:
     min: 5
     max: 15
     step: 1
-  sprinkler2_time:
-    name: "Sprinkler 2 time"
-    icon: mdi:clock-start
-    initial: 5
-    min: 5
-    max: 15
-    step: 1
-  sprinkler3_time:
-    name: "Sprinkler 3 time"
-    icon: mdi:clock-start
-    initial: 5
-    min: 5
-    max: 15
-    step: 1
-  sprinkler4_time:
-    name: "Sprinkler 4 time"
-    icon: mdi:clock-start
-    initial: 5
-    min: 5
-    max: 15
-    step: 1
+    
+  # this is for the integer times for sprinklers for sun up/sun down
+  # ranges 5..15 minutes in 1 minute increments
   sprinkler1_suntime:
     name: "Sprinkler 1 suntime"
     icon: mdi:clock-start
@@ -87,24 +40,4 @@ input_number:
     min: 5
     max: 15
     step: 1
-  sprinkler2_suntime:
-    name: "Sprinkler 2 suntime"
-    icon: mdi:clock-start
-    initial: 5
-    min: 5
-    max: 15
-    step: 1
-  sprinkler3_suntime:
-    name: "Sprinkler 3 suntime"
-    icon: mdi:clock-start
-    initial: 5
-    min: 5
-    max: 15
-    step: 1
-  sprinkler4_suntime:
-    name: "Sprinkler 4 suntime"
-    icon: mdi:clock-start
-    initial: 5
-    min: 5
-    max: 15
-    step: 1
+  
