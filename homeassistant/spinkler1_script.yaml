@@ -5,7 +5,7 @@
 # gadget converts 1..4 to 15,30,45 and 60 mins, or use 15,30,45 and 60 mins, or set milliseconds directly >5min worth and <1hr worth
 # payload ignored when OFF topic is recieved
 
-sprinkler1_script:
+'1595036008915':
   alias: sprinkler1_script
   sequence:
   - data_template:
