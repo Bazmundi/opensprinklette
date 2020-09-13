@@ -9,3 +9,5 @@ The home server is running HA, node-red, xmqtt and deCONZ at the moment.  I am g
 keep that a separate project.
 
 My docker-compose.yml is included.
+
+Any sprinklerX is repeated sprinkler1..4.   I am currently only running a quad board but that will change over time.
