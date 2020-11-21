@@ -70,7 +70,7 @@ unsigned long lastOnMsg[] = {0,0,0,0}; // Time in milliseconds from milli(). Fou
 
 // relay management constants
 const unsigned long onehr           = 3600000;  // In milliseconds.  Fail safe since water is expensive.
-const unsigned long fivemin            = onehr / 12;
+const unsigned long fivemin         = onehr / 12;
 const unsigned long fifteenmin      = onehr / 4;
 const unsigned long onemin          = onehr / 60;
 const unsigned long watchdog        = onehr + fivemin;  // not currently used
