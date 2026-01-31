@@ -7,6 +7,11 @@ THE DESIGN IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
 # opensprinklette
 ESP8266 code for singe or quad wifi driven relays for sprinkler systems.
 
+** BREAKING NEWS! FLASK BASE SERVER SIDE WEB APP CONTROLLER WITH WEATHER AND SCHEDULING AT:
+```
+https://github.com/Bazmundi/opensprinklette_host_controller
+```
+
 I am using node-red and emqx to control the gadets.  Though I have also set up to use ESPHome within Home Assistant (see wiki pages).  The Home Assitant is much easier to set up, but there are as many people interested in node-red etc.  
 
 The aim is to let the main host do all the scheduling and leave the sprinkler on/off to a sub AUS$50 sprinkler-server.  Some of that $50 is on a board I designed that acts as a motherboard for the Wemos and shields.   That motherboard does the work to convert the 24VAC of the sprinkler system to board level DC.  That will be 9VDC for the quad board and 5VDC for the single.
